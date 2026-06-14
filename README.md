@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vorexis OS
+
+A premium 3D full-stack developer portfolio platform built with Next.js 15, React Three Fiber, Supabase, and Framer Motion.
+
+## Features
+
+- **Cinematic Hero** — 3D environment with particles, floating tech icons, and mouse-reactive lighting
+- **Portfolio Sections** — About, Experience Timeline, Skills Galaxy, Projects Showcase, Certifications Wall, Resume Center, Contact Terminal
+- **Admin Dashboard** — Full CRUD for all content modules, protected by Supabase Auth
+- **Premium Dark Theme** — Glassmorphism, aurora gradients, neon highlights, JARVIS-style UI
+- **Demo Mode** — Works out of the box with demo data when Supabase is not configured
+
+## Tech Stack
+
+- **Frontend:** Next.js 15 App Router, TypeScript, Tailwind CSS v4, Framer Motion, GSAP, React Three Fiber, Drei, Shadcn UI, Zustand
+- **Backend:** Supabase (Auth, PostgreSQL, Storage, RLS)
+- **Validation:** React Hook Form + Zod
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Run `supabase/schema.sql` in the SQL Editor
+3. Create storage buckets: `avatars`, `projects`, `resumes`, `certifications`
+4. Copy your project URL and anon key to `.env.local`
+5. Create an auth user and insert a profile row with `is_owner = true`
 
-## Learn More
+```sql
+INSERT INTO profiles (user_id, full_name, title, email, is_owner)
+VALUES ('your-auth-user-id', 'Your Name', 'Full Stack Developer', 'you@email.com', true);
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Admin Panel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Navigate to `/admin/login` and sign in with your Supabase credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # Shared UI and 3D components
+├── features/         # Feature-based modules (hero, projects, admin, etc.)
+├── hooks/            # Custom React hooks
+├── lib/              # Utilities, Supabase clients, demo data
+├── services/         # Data access layer (Page → Service → Supabase)
+├── stores/           # Zustand state management
+└── types/            # TypeScript type definitions
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to Vercel and set environment variables from `.env.example`.
+
+## License
+
+MIT
