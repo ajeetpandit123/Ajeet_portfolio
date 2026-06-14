@@ -16,7 +16,7 @@ export const DEMO_PROFILE: Profile = {
   tagline: "Architecting digital experiences at the intersection of design and code.",
   bio: "I'm a passionate full stack developer with 8+ years of experience building scalable web applications. I specialize in React, Node.js, and cloud architecture, with a keen eye for premium UI/UX design. When I'm not coding, you'll find me exploring new technologies, contributing to open source, or mentoring junior developers.",
   avatar_url: null,
-  email: "alex@vorexis.dev",
+  email: "alex@ajeet.dev",
   location: "San Francisco, CA",
   is_owner: true,
   created_at: new Date().toISOString(),

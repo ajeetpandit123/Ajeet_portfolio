@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vorexis OS — Full Stack Developer Portfolio",
-    template: "%s | Vorexis OS",
+    default: "Ajeet.dev — Full Stack Developer Portfolio",
+    template: "%s | Ajeet.dev",
   },
   description:
     "A premium 3D developer portfolio platform. Explore projects, skills, experience, and connect through an immersive futuristic interface.",
@@ -27,18 +27,18 @@ export const metadata: Metadata = {
     "next.js",
     "3D portfolio",
   ],
-  authors: [{ name: "Vorexis OS" }],
+  authors: [{ name: "Ajeet.dev" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Vorexis OS",
-    title: "Vorexis OS — Full Stack Developer Portfolio",
+    siteName: "Ajeet.dev",
+    title: "Ajeet.dev — Full Stack Developer Portfolio",
     description:
       "A premium 3D developer portfolio platform with immersive experiences.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vorexis OS — Full Stack Developer Portfolio",
+    title: "Ajeet.dev — Full Stack Developer Portfolio",
     description:
       "A premium 3D developer portfolio platform with immersive experiences.",
   },

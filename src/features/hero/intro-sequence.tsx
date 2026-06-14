@@ -39,7 +39,7 @@ export function IntroSequence() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-3xl font-bold tracking-wider mb-2"
             >
-              VOREXIS
+              AJEET
             </motion.h1>
 
             <motion.p

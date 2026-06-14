@@ -64,10 +64,10 @@ export default function AdminLayout({
       >
         <div className="flex items-center gap-2 p-6 border-b border-glass-border">
           <div className="w-8 h-8 rounded-lg border border-primary/30 flex items-center justify-center">
-            <span className="text-sm font-bold text-primary">V</span>
+            <span className="text-sm font-bold text-primary">A</span>
           </div>
           <span className="font-mono text-sm">
-            Vorexis<span className="text-primary">Admin</span>
+            Ajeet<span className="text-primary">Admin</span>
           </span>
         </div>
 

@@ -60,7 +60,7 @@ export function AdminOverview({ stats }: AdminOverviewProps) {
       <div className="mb-8">
         <h2 className="text-2xl font-bold">Dashboard Overview</h2>
         <p className="text-muted text-sm mt-1">
-          Welcome to Vorexis OS Control Panel
+          Welcome to Ajeet.dev Control Panel
         </p>
       </div>
 

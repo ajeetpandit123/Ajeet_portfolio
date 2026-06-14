@@ -30,10 +30,10 @@ export function Navbar() {
       <nav className="container-max px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg border border-primary/30 flex items-center justify-center group-hover:neon-border transition-all">
-            <span className="text-sm font-bold text-primary">V</span>
+            <span className="text-sm font-bold text-primary">A</span>
           </div>
           <span className="font-mono text-sm hidden sm:block">
-            Vorexis<span className="text-primary">OS</span>
+            Ajeet<span className="text-primary">.dev</span>
           </span>
         </a>
 

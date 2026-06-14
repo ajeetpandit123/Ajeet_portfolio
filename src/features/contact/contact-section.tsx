@@ -25,7 +25,7 @@ type ContactForm = z.infer<typeof contactSchema>;
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [terminalLines, setTerminalLines] = useState<string[]>([
-    "> Vorexis OS Terminal v2.0",
+    "> Ajeet.dev Terminal v2.0",
     "> Connection established...",
     "> Ready to receive transmission.",
   ]);
@@ -90,7 +90,7 @@ export function ContactSection() {
           >
             <div className="flex items-center gap-2 mb-4 pb-4 border-b border-glass-border">
               <Terminal className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted">vorexis-terminal</span>
+              <span className="text-xs text-muted">ajeet-terminal</span>
               <div className="ml-auto flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-destructive/60" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/60" />

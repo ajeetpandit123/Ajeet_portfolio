@@ -27,10 +27,10 @@ export function Footer({ socialLinks, profileName }: FooterProps) {
             viewport={{ once: true }}
           >
             <div className="w-8 h-8 rounded-lg border border-primary/30 flex items-center justify-center">
-              <span className="text-sm font-bold text-primary">V</span>
+              <span className="text-sm font-bold text-primary">A</span>
             </div>
             <span className="font-mono text-sm text-muted">
-              Vorexis OS &copy; {new Date().getFullYear()}
+              Ajeet.dev &copy; {new Date().getFullYear()}
             </span>
           </motion.div>
 
