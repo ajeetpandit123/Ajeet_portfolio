@@ -1,0 +1,278 @@
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Uncaught Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <HomePage>
+              <PortfolioClient profile={{id:"demo-p...", ...}} stats={{projects:24, ...}} projects={[...]} skills={[...]} ...>
+                <IntroSequence>
+                <Navbar>
+                <main>
+                  <HeroSection>
+                  <AboutSection>
+                  <ExperienceSection>
+                  <SkillsSection skills={[...]}>
+                    <section id="skills" className="section-pa...">
+                      <div className="container-max">
+                        <SectionHeader>
+                        <div className="relative h...">
+                          <div>
+                          <div>
+                          <div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div className="absolute g..." style={{left:"calc...", ...}} ...>
+                            <div
+                              className="absolute glass rounded-xl px-3 py-2 cursor-pointer group"
+                              style={{
++                               left: "calc(50% + -110.0000000000001px)"
+-                               left: "calc(50% - 110px)"
++                               top: "calc(50% + -190.52558883257643px)"
+-                               top: "calc(50% - 190.526px)"
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "scale(0)"
+-                               transform: "scale(0)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          ...
+                        ...
+                  <ProjectsSection>
+                  <CertificationsSection>
+                  <ResumeSection resume={{id:"demo-r...", ...}}>
+                    <section id="resume" className="section-pa...">
+                      <div>
+                      <div className="container-...">
+                        <SectionHeader>
+                        <motion.div className="max-w-xl m..." initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} ...>
+                          <div className="max-w-xl m..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                            <div>
+                            <h3>
+                            <p className="text-sm te...">
++                             6/15/2026
+-                             15/6/2026
+                            ...
+                  ...
+                ...
+          ...
+        ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at p (<anonymous>)
+    at ResumeSection (src/features/resume/resume-section.tsx:37:11)
+    at PortfolioClient (src/features/portfolio/portfolio-client.tsx:74:9)
+    at HomePage (src\app\page.tsx:43:7)
+  35 |
+  36 |           <h3 className="text-xl font-bold mb-2">{resume.file_name}</h3>
+> 37 |           <p className="text-sm text-muted mb-8 font-mono">
+     |           ^
+  38 |             Last updated: {new Date(resume.updated_at).toLocaleDateString()}
+  39 |           </p>
+  40 |
+[browser] Uncaught Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <HomePage>
+              <PortfolioClient profile={{id:"demo-p...", ...}} stats={{projects:24, ...}} projects={[...]} skills={[...]} ...>
+                <IntroSequence>
+                <Navbar>
+                <main>
+                  <HeroSection>
+                  <AboutSection>
+                  <ExperienceSection>
+                  <SkillsSection skills={[...]}>
+                    <section id="skills" className="section-pa...">
+                      <div className="container-max">
+                        <SectionHeader>
+                        <div className="relative h...">
+                          <div>
+                          <div>
+                          <div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div className="absolute g..." style={{left:"calc...", ...}} ...>
+                            <div
+                              className="absolute glass rounded-xl px-3 py-2 cursor-pointer group"
+                              style={{
++                               left: "calc(50% + -110.0000000000001px)"
+-                               left: "calc(50% - 110px)"
++                               top: "calc(50% + -190.52558883257643px)"
+-                               top: "calc(50% - 190.526px)"
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "scale(0)"
+-                               transform: "scale(0)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          ...
+                        ...
+                  <ProjectsSection>
+                  <CertificationsSection>
+                  <ResumeSection resume={{id:"demo-r...", ...}}>
+                    <section id="resume" className="section-pa...">
+                      <div>
+                      <div className="container-...">
+                        <SectionHeader>
+                        <motion.div className="max-w-xl m..." initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} ...>
+                          <div className="max-w-xl m..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                            <div>
+                            <h3>
+                            <p className="text-sm te...">
++                             15/06/2026
+-                             15/6/2026
+                            ...
+                  ...
+                ...
+          ...
+        ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at p (<anonymous>)
+    at ResumeSection (src/features/resume/resume-section.tsx:37:11)
+    at PortfolioClient (src/features/portfolio/portfolio-client.tsx:74:9)
+    at HomePage (src\app\page.tsx:43:7)
+  35 |
+  36 |           <h3 className="text-xl font-bold mb-2">{resume.file_name}</h3>
+> 37 |           <p className="text-sm text-muted mb-8 font-mono">
+     |           ^
+  38 |             Last updated: {new Date(resume.updated_at).toLocaleDateString()}
+  39 |           </p>
+  40 |
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
+[browser] Uncaught Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <HomePage>
+              <PortfolioClient profile={{id:"demo-p...", ...}} stats={{projects:24, ...}} projects={[...]} skills={[...]} ...>
+                <IntroSequence>
+                <Navbar>
+                <main>
+                  <HeroSection>
+                  <AboutSection>
+                  <ExperienceSection>
+                  <SkillsSection skills={[...]}>
+                    <section id="skills" className="section-pa...">
+                      <div className="container-max">
+                        <SectionHeader>
+                        <div className="relative h...">
+                          <div>
+                          <div>
+                          <div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div>
+                          <motion.div className="absolute g..." style={{left:"calc...", ...}} ...>
+                            <div
+                              className="absolute glass rounded-xl px-3 py-2 cursor-pointer group"
+                              style={{
++                               left: "calc(50% + -110.0000000000001px)"
+-                               left: "calc(50% - 110px)"
++                               top: "calc(50% + -190.52558883257643px)"
+-                               top: "calc(50% - 190.526px)"
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "scale(0)"
+-                               transform: "scale(0)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          ...
+                        ...
+                  <ProjectsSection>
+                  <CertificationsSection>
+                  <ResumeSection resume={{id:"demo-r...", ...}}>
+                    <section id="resume" className="section-pa...">
+                      <div>
+                      <div className="container-...">
+                        <SectionHeader>
+                        <motion.div className="max-w-xl m..." initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} ...>
+                          <div className="max-w-xl m..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                            <div>
+                            <h3>
+                            <p className="text-sm te...">
++                             6/15/2026
+-                             15/6/2026
+                            ...
+                  ...
+                ...
+          ...
+        ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at p (<anonymous>)
+    at HomePage (src\app\page.tsx:43:7)
+  41 |   if (!profile) {
+  42 |     return (
+> 43 |       <PortfolioClient
+     |       ^
+  44 |         profile={DEMO_PROFILE}
+  45 |         stats={DEMO_STATS}
+  46 |         projects={DEMO_PROJECTS}
+[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Lock, Terminal } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { ensureOwnerProfile } from "../actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,6 +31,14 @@ export default function AdminLoginPage() {
 
     if (authError) {
       setError(authError.message);
+      setLoading(false);
+      return;
+    }
+
+    const profileResult = await ensureOwnerProfile();
+
+    if (!profileResult.ok) {
+      setError(profileResult.error ?? "Unable to prepare the admin profile.");
       setLoading(false);
       return;
     }
@@ -89,9 +99,9 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="text-center text-xs text-muted mt-6">
-          <a href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors">
             ← Back to Portfolio
-          </a>
+          </Link>
         </p>
       </motion.div>
     </div>

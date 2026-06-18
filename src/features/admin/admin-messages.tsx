@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Mail, MailOpen, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { GlassCard } from "@/components/ui/glass-card";
-import { createClient } from "@/lib/supabase/client";
+import { deleteAdminRecord, markAdminMessageRead } from "@/app/admin/actions";
 import type { ContactMessage } from "@/types/database";
 
 interface AdminMessagesProps {
@@ -12,35 +13,30 @@ interface AdminMessagesProps {
 }
 
 export function AdminMessages({ messages: initial }: AdminMessagesProps) {
+  const router = useRouter();
   const [messages, setMessages] = useState(initial);
 
   const markRead = async (id: string) => {
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("contact_messages")
-      .update({ is_read: true } as never)
-      .eq("id", id);
-    if (error) {
-      toast.error(error.message);
+    const result = await markAdminMessageRead(id);
+    if (!result.ok) {
+      toast.error(result.error);
       return;
     }
     setMessages((prev) =>
       prev.map((m) => (m.id === id ? { ...m, is_read: true } : m))
     );
+    router.refresh();
   };
 
   const deleteMessage = async (id: string) => {
     if (!confirm("Delete this message?")) return;
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("contact_messages")
-      .delete()
-      .eq("id", id);
-    if (error) {
-      toast.error(error.message);
+    const result = await deleteAdminRecord("contact_messages", id);
+    if (!result.ok) {
+      toast.error(result.error);
       return;
     }
     setMessages((prev) => prev.filter((m) => m.id !== id));
+    router.refresh();
     toast.success("Message deleted");
   };
 

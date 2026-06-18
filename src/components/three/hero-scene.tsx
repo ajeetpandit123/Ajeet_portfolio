@@ -58,14 +58,19 @@ function TechSphere() {
   );
 }
 
+function seededPosition(index: number) {
+  const seed = Math.sin(index * 12.9898) * 43758.5453;
+  return (seed - Math.floor(seed) - 0.5) * 20;
+}
+
 function Particles() {
   const count = 200;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 20;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      pos[i * 3] = seededPosition(i * 3);
+      pos[i * 3 + 1] = seededPosition(i * 3 + 1);
+      pos[i * 3 + 2] = seededPosition(i * 3 + 2);
     }
     return pos;
   }, [count]);

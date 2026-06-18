@@ -1,0 +1,33 @@
+
+> vorexis-os@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.24.160.1:3000
+- Environments: .env
+✓ Ready in 3.8s
+
+ GET / 200 in 10.5s (next.js: 2.6s, proxy.ts: 1141ms, application-code: 6.7s)
+ GET / 200 in 3.8s (next.js: 189ms, proxy.ts: 745ms, application-code: 2.9s)
+ GET / 200 in 11.7s (next.js: 932ms, proxy.ts: 5.2s, application-code: 5.6s)
+ GET /admin/login 200 in 3.8s (next.js: 1473ms, proxy.ts: 31ms, application-code: 2.3s)
+✓ Compiled in 27.5s
+✓ Finished filesystem cache database compaction in 11.0s
+ GET /admin/login 200 in 9.3s (next.js: 5.1s, proxy.ts: 3.2s, application-code: 976ms)
+ GET /admin/login 200 in 488ms (next.js: 42ms, proxy.ts: 31ms, application-code: 415ms)
+ GET /admin/login 200 in 853ms (next.js: 318ms, proxy.ts: 24ms, application-code: 511ms)
+ GET /admin/login 200 in 420ms (next.js: 19ms, proxy.ts: 24ms, application-code: 377ms)
+ GET /admin/login 200 in 541ms (next.js: 71ms, proxy.ts: 23ms, application-code: 448ms)
+ GET /admin/login 200 in 376ms (next.js: 17ms, proxy.ts: 17ms, application-code: 342ms)
+ GET /admin/login 200 in 310ms (next.js: 12ms, proxy.ts: 20ms, application-code: 279ms)
+✓ Compiled in 3.9s
+ GET /admin/login 200 in 3.5s (next.js: 2.2s, proxy.ts: 457ms, application-code: 841ms)
+ GET /admin/login 200 in 1209ms (next.js: 726ms, proxy.ts: 201ms, application-code: 282ms)
+ GET /admin/login 200 in 9.5s (next.js: 357ms, proxy.ts: 678ms, application-code: 8.5s)
+✓ Compiled in 13.9s
+ GET /admin/login 200 in 7.8s (next.js: 2.9s, proxy.ts: 1161ms, application-code: 3.8s)
+ GET /admin/login 200 in 1471ms (next.js: 675ms, proxy.ts: 167ms, application-code: 629ms)
+ GET /admin/login 200 in 638ms (next.js: 44ms, proxy.ts: 45ms, application-code: 549ms)
+ GET /admin/login 200 in 566ms (next.js: 35ms, proxy.ts: 31ms, application-code: 500ms)
+[?25h

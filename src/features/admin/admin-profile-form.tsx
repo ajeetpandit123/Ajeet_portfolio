@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { GlassCard } from "@/components/ui/glass-card";
-import { createClient } from "@/lib/supabase/client";
+import { saveAdminRecord } from "@/app/admin/actions";
 import type { Profile } from "@/types/database";
 
 interface AdminProfileFormProps {
@@ -15,28 +16,27 @@ interface AdminProfileFormProps {
 }
 
 export function AdminProfileForm({ profile: initial }: AdminProfileFormProps) {
+  const router = useRouter();
   const [profile, setProfile] = useState(initial);
   const [loading, setLoading] = useState(false);
 
   const handleSave = async () => {
     setLoading(true);
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("profiles")
-      .update({
-        full_name: profile.full_name,
-        title: profile.title,
-        tagline: profile.tagline,
-        bio: profile.bio,
-        email: profile.email,
-        location: profile.location,
-        avatar_url: profile.avatar_url,
-      } as never)
-      .eq("id", profile.id);
+    const result = await saveAdminRecord("profiles", {
+      full_name: profile.full_name,
+      title: profile.title,
+      tagline: profile.tagline,
+      bio: profile.bio,
+      email: profile.email,
+      location: profile.location,
+      avatar_url: profile.avatar_url,
+    });
 
-    if (error) {
-      toast.error(error.message);
+    if (!result.ok) {
+      toast.error(result.error);
     } else {
+      setProfile(result.data as Profile);
+      router.refresh();
       toast.success("Profile updated");
     }
     setLoading(false);

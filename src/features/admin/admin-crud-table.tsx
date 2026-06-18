@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { GlassCard } from "@/components/ui/glass-card";
-import { createClient } from "@/lib/supabase/client";
+import { deleteAdminRecord, saveAdminRecord } from "@/app/admin/actions";
 
 interface Field {
   name: string;
@@ -35,6 +36,7 @@ export function AdminCrudTable<T extends { id: string }>({
   columns,
   defaultValues = {},
 }: AdminCrudTableProps<T>) {
+  const router = useRouter();
   const [data, setData] = useState(items);
   const [editing, setEditing] = useState<T | null>(null);
   const [isCreating, setIsCreating] = useState(false);
@@ -61,7 +63,6 @@ export function AdminCrudTable<T extends { id: string }>({
 
   const handleSave = async () => {
     setLoading(true);
-    const supabase = createClient();
 
     try {
       const processed = { ...formData };
@@ -81,30 +82,20 @@ export function AdminCrudTable<T extends { id: string }>({
       });
 
       if (isCreating) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { data: created, error } = await (supabase as any)
-          .from(table)
-          .insert(processed)
-          .select()
-          .single();
-        if (error) throw error;
-        setData((prev) => [...prev, created as T]);
+        const result = await saveAdminRecord(table as never, processed);
+        if (!result.ok) throw new Error(result.error);
+        setData((prev) => [...prev, result.data as T]);
         toast.success(`${title} created`);
       } else if (editing) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { data: updated, error } = await (supabase as any)
-          .from(table)
-          .update(processed)
-          .eq("id", editing.id)
-          .select()
-          .single();
-        if (error) throw error;
+        const result = await saveAdminRecord(table as never, processed, editing.id);
+        if (!result.ok) throw new Error(result.error);
         setData((prev) =>
-          prev.map((item) => (item.id === editing.id ? (updated as T) : item))
+          prev.map((item) => (item.id === editing.id ? (result.data as T) : item))
         );
         toast.success(`${title} updated`);
       }
       closeForm();
+      router.refresh();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Operation failed");
     } finally {
@@ -114,14 +105,13 @@ export function AdminCrudTable<T extends { id: string }>({
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this item?")) return;
-    const supabase = createClient();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { error } = await (supabase as any).from(table).delete().eq("id", id);
-    if (error) {
-      toast.error(error.message);
+    const result = await deleteAdminRecord(table as never, id);
+    if (!result.ok) {
+      toast.error(result.error);
       return;
     }
     setData((prev) => prev.filter((item) => item.id !== id));
+    router.refresh();
     toast.success(`${title} deleted`);
   };
 
